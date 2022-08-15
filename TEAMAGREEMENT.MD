@@ -122,5 +122,3 @@ Minimum Viable Product (MVP) definition.
 **What is the minimum required for you to present on your demo day?**
 
 Create the app to track a habit with all required parameters of project scope.
-
-
