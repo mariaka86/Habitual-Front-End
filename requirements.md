@@ -15,6 +15,7 @@ It’s useful.
 
 Scope (In/Out)
 IN - What will your product do
+
 - the web app will provide data to the user about their chosen habit through graph, grid etc.(track)
 
 - the web app will provide progress reports about their habit
@@ -27,9 +28,9 @@ OUT - What will your product not do.
 
 - we'll not be letting the user compare data between two habits (could get convulated)
 
-
 Minimum Viable Product vs
 What will your MVP functionality be?
+
 - add habits
 - add frequency
 - track habits
@@ -41,13 +42,15 @@ What are your stretch goals?
 
 Stretch
 What stretch goals are you going to aim for?
+
 - intergrating  a reminder
 
 Functional Requirements
 List the functionality of your product. This will consist of tasks such as the following:
 
-- A user can add a habits 
+- A user can add a habits
 - A user can delete a habit
+
 -
 Data Flow
 Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
