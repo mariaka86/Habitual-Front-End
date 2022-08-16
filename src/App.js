@@ -1,3 +1,5 @@
+import React from 'react';
+
 
 import './App.css';
 
@@ -20,6 +22,6 @@ function App() {
       </header>
     </div>
   );
-}
+  }
 
 export default App;
