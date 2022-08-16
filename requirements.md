@@ -55,14 +55,6 @@ Describe the flow of data in your application. Write out what happens from the t
 Non-Functional Requirements (301 & 401 only)
 Non-functional requirements are requirements that are not directly related to the functionality of the application but still important to the app.
 
-Examples include:
-
-Security
-Usability
-Testability
-etc….
 Pick 2 non-functional requirements and describe their functionality in your application.
-
-If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
 
 Security would be one of the nonfunctional requirements. This would be because we'll be intergrating OAuth to allow the user to log in and out of the application. Usability would be the second of our nonfunctional requirements, we'd try to get the app to be user friendly. Such as a loading wheel when something is loading and having functional buttons that animate when clicked.
