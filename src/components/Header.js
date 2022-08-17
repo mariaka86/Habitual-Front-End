@@ -3,7 +3,7 @@ import React from "react";
 import AuthButton from "./AuthButton.js";
 import About from "./About.js";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// import Home from "./Home.js";
+import Home from "./Home.js";
 import Dashboard from "./Dashboard.js";
 // import Progress from "./Progress.js";
 
@@ -14,7 +14,7 @@ class Header extends React.Component {
       <h1>Habitual</h1>
       <AuthButton/>
       <Router>
-        {/* <Link to="/">Home</Link> */}
+        { <Link to="/">Home</Link> }
         <Link to="/Dashboard">Add a Habit</Link>
         {/* <Link to="/Progress">Check Progress</Link> */}
         <Link to="/About">About Us</Link>
