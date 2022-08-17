@@ -3,7 +3,7 @@ import Header from './Header.js';
 // import About from './About.js';
 // import Footer from './Footer.js';
 // import Progress from './Progress.js';
-// import AddHabit from './AddHabit.js';
+// import Dashboard from './Dashboard.js';
 // import Home from './Home.js';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
       <div>
         {/* <Home/> */}
         <Header/>
-        {/* <AddHabit/>
+        {/* <Dashboard/>
         <Progress/>
         <About/>
         <Footer/> */}

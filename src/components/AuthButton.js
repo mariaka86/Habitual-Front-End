@@ -4,12 +4,17 @@ import LoginButton from './LoginButton.js';
 import LogoutButton from './LogoutButton.js';
 
 // created AuthButton in order to pull into Header easier.
-const AuthButton = () => {
-    this.props.auth0.isAuthenticated ? (
-        <LogoutButton />
-    ) : (
-        <LoginButton />
-    )
+class AuthButton extends React.Component {
+    render() {
+        return (
+            this.props.auth0.isAuthenticated ? (
+                <LogoutButton />
+            ) : (
+                <LoginButton />
+            )
+
+        )
+    }
 }
 
 export default withAuth0(AuthButton);
