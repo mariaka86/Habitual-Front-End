@@ -11,6 +11,7 @@ class Header extends React.Component {
   render() {
     return (
       <>
+      <h1>Habitual</h1>
       <AuthButton/>
       <Router>
         {/* <Link to="/">Home</Link> */}

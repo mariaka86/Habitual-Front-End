@@ -1,21 +1,14 @@
-import { withAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import LoginButton from './LoginButton.js';
-import LogoutButton from './LogoutButton.js';
 
-// created AuthButton in order to pull into Header easier.
-class AuthButton extends React.Component {
-    render() {
-        return (
-            this.props.auth0.isAuthenticated ? (
-                <LogoutButton />
-            ) : (
-                <LoginButton />
-            )
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
-        )
-    }
-}
+const AuthButton = () => {
+	const { isAuthenticated } = useAuth0();
 
-export default withAuth0(AuthButton);
+	return isAuthenticated ? <LogoutButton /> : <LoginButton />;
+};
+
+export default AuthButton;
 
