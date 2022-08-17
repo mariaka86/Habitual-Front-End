@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 // import Header from './Header.js';
 // import Footer from './Footer.js';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class About extends React.Component{
 
     render() {
@@ -33,8 +33,7 @@ class About extends React.Component{
                         <Card.Title>Jack</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
+                        Jack is a student at DeltaV Code School studying software development. He's am making the career transition into software development because tech has always been a large part of his personal life, and he want a career that prioritizes learning and honing his skills.
                         </Card.Text>
                     </Card.Body>
                 </Card>
