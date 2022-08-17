@@ -19,7 +19,7 @@ class Header extends React.Component {
         {/* <Link to="/Progress">Check Progress</Link> */}
         <Link to="/About">About Us</Link>
         <Routes>
-          {/* <Route exact path="/" element={<Home />} /> */}
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/Dashboard" element={<Dashboard />} />
           {/* <Route exact path="/Progress" element={<Progress />} /> */}
           <Route exact path="/About" element={<About />} />
