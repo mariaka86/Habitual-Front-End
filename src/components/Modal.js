@@ -1,38 +1,81 @@
-import React from 'react'
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Form from 'react-bootstrap/Form';
 
-const Modal = props => {
-  if(props.show){
-    return null
+class HabitModal extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      showModal: false
+    }
   }
+  handleOnHide=() => {
+  this.setState({
+    showModal:true
+  })
+}
+
+handleOnShowModal=() => {
+  this.setState({
+    showModal: false
+  })
+}
+
+render() {
   return (
-    <div className='modal' onClick={props.onClose}>
-      <div className='modal-content' onClick={e => e.stopPropagation()}>
-        <div className='modal-header'>
-          <h4>Add A Habit!</h4>
-        </div>
-        <div className='modal-body'>
-          <form>
-            <label>
-              Habit:
-              <input type='text' name='habit'/>
-            </label>
-            <br/>
-            <label>
-              How frequently will you try and achieve this goal?
-              <select>
-                <option value='daily'>Daily</option>
-                <option value='weekly'>Weekly</option>
-              </select>
-            </label>
-          </form>
-        </div>
-        <div className='modal-footer'>
-          <button onClick={props.onClose} className='modal-button'>
-            Add Habit</button>
-        </div>
-      </div>
-    </div>
+    <Modal show={this.state.showModal} onHide={this.handleOnHide}>
+    <Modal.Header closeButton>
+      <Modal.Title>Add Your Habit</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <Form>
+        <Form.Group className="habitName">
+          <Form.Label>Habit Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ex: Drink more water"
+            autoFocus/>
+        </Form.Group>
+        <Form.Group className="habitGoal" controlId="nameHabitGoal">
+          <Form.Label>Habit Goal</Form.Label>
+          <Form.Control   
+            type="text"
+            placeholder="Ex: Drink 72oz of water everyday"
+            autoFocus/>
+        </Form.Group>
+        <Form.Group className="habitFrequency" controlId="formHabitFreq">
+          <Form.Label>How often do you want to work on your goal?</Form.Label>
+          <Form.Control   
+            type="number"
+            autoFocus/>
+        </Form.Group>
+        <Form.Group className="habitDays" controlId="formHabitDays">
+          <Form.Label>What days of the week do you want to work on your goal?</Form.Label>
+          <Form.Control   
+            type="checkbox"
+            label1="Monday"
+            label2="Tuesday"
+            label3="Wednesday"
+            label4="Thursday"
+            label5="Friday"
+            autoFocus/>
+        </Form.Group>
+      </Form>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={this.handleOnHide}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={this.handleOnHide}>
+        Add Your Habit
+      </Button>
+    </Modal.Footer>
+  </Modal>
   )
 }
 
-export default Modal;
+
+}
+export default HabitModal
