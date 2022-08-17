@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+// import Header from './Header.js';
+// import Footer from './Footer.js';
 
 class About extends React.Component{
 
