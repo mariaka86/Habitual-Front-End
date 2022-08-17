@@ -7,6 +7,8 @@ import image from '../images/marypic.JPG';
 import image1 from '../images/alliepic.jpg';
 import image2 from '../images/jackpic.png';
 import image3 from '../images/teresapic.jpg';
+// import './About.css'
+
 
 class About extends React.Component{
 
