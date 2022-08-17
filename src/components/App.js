@@ -14,8 +14,8 @@ class App extends React.Component {
         {<Home />}
         {/* <Dashboard/>
         <Progress/>
-        <About/*/>
-        <Footer/> }
+        <About/>
+        <Footer/>*/}
       </div>
     );
   }
