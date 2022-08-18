@@ -6,13 +6,23 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home.js";
 import Dashboard from "./Dashboard.js";
 // import Progress from "./Progress.js";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 class Header extends React.Component {
   render() {
     return (
       <>
-      <h1>Habitual</h1>
+    <Navbar>
+      <Container>
+      <Nav.Item> 
       <AuthButton/>
+      </Nav.Item>
+      </Container>
+      <Container>
+      <h1>Habitual</h1>
+      </Container>
       <Router>
         { <Link to="/">Home</Link> }
         <Link to="/Dashboard">Add a Habit</Link>
@@ -25,6 +35,7 @@ class Header extends React.Component {
           <Route exact path="/About" element={<About />} />
         </Routes>
       </Router>
+      </Navbar>
       </>
     );
   }
