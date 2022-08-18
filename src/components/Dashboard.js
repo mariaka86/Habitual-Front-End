@@ -84,7 +84,7 @@ class Dashboard extends Component {
 					onClick={this.handleOnShowModal}
 					colorScheme='purple'
 				>
-					Modal
+					Add A New Habit
 				</Button>
 
 				{/* <Container>
