@@ -16,7 +16,7 @@ class Dashboard extends Component {
 			user: undefined,
 			habit_quantity: 0,
 			habits: [],
-			showModal: false,
+			showModal: false
 		};
 	}
 	handleOnHide = () => {
@@ -42,10 +42,12 @@ class Dashboard extends Component {
 				console.log(res.data); //* [{...}] Data is an array of objects
 				this.setState({ user: res.data[0].name }); //* Zoe
 				console.log(this.state.user);
-				this.setState({ habit_quantity: res.data[0].habits.length});
+				this.setState({ habit_quantity: res.data[0].habits.length });
 				console.log(this.state.habit_quantity);
-				this.setState({ habits: res.data[0].habits })
-				console.log(`this is the state of habits: ${JSON.stringify(this.state.habits)}`);
+				this.setState({ habits: res.data[0].habits });
+				console.log(
+					`this is the state of habits: ${JSON.stringify(this.state.habits)}`
+				);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -57,18 +59,23 @@ class Dashboard extends Component {
 		return (
 			<>
 				<Heading>This will be the dashboard for our habits!</Heading>
-				{this.state.habit_quantity > 0 && (
+				{this.state.habit_quantity > 0 &&
 					this.state.habits.map((habit, idx) => {
-						return <HabitCard key={idx} count={this.state.count} habit_name={habit.habit_name} habit_goal={habit.habit_goal}/>
-					})
-				)}
+						return (
+							<HabitCard
+								key={idx}
+								count={this.state.count}
+								habit_name={habit.habit_name}
+								habit_goal={habit.habit_goal}
+							/>
+						);
+					})}
 
 				<HabitCard count={this.state.count} habit_name={'jellybean'} />
 
-				{/* <Button as={'button'} onClick={this.handleOnShowModal}>
+				<Button as={'button'} onClick={this.handleOnShowModal}>
 					Modal
-				</Button> */}
-
+				</Button>
 
 				{/* <Container>
 					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
@@ -80,11 +87,11 @@ class Dashboard extends Component {
 					</Grid>
 				</Container> */}
 
-				{/* <HabitModal
+				<HabitModal
 					showModal={this.state.showModal}
 					onHide={this.handleOnHide}
 					handleOnHide={this.handleOnHide}
-				/> */}
+				/>
 
 				{totalHabits === 0 && (
 					<Alert status='error'>
