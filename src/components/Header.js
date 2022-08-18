@@ -15,7 +15,7 @@ class Header extends React.Component {
       <AuthButton/>
       <Router>
         { <Link to="/">Home</Link> }
-        {/* <Link to="/Dashboard">Add a Habit</Link> */}
+        <Link to="/Dashboard">Add a Habit</Link>
         {/* <Link to="/Progress">Check Progress</Link> */}
         <Link to="/About">About Us</Link>
         <Routes>
