@@ -3,6 +3,7 @@ import React from "react";
 // import Footer from './Footer.js';
 //import Dashboard from './Dashboard.js';
 import { Bar } from "react-chartjs-2";
+import HabitModal from "./Modal";
 
 
 class HabitChart extends React.Component {
@@ -14,7 +15,7 @@ class HabitChart extends React.Component {
     return (
       <div>
         <Bar
-          data={}
+          data={HabitModal}
           options={{
             plugins: {
               title: {
