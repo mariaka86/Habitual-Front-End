@@ -35,7 +35,7 @@ class Dashboard extends Component {
 
 	getBackend = async () => {
 		await axios
-			.get(`${SERVER}/`)
+			.get(`${SERVER}/habits`)
 			.then((res) => {
 				console.log(res.data);
 			})
