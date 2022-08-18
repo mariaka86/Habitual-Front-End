@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container } from '@chakra-ui/react';
-import { Alert, AlertIcon, Heading } from '@chakra-ui/react';
-import { Grid, GridItem, Button } from '@chakra-ui/react';
+import {
+	Grid,
+	GridItem,
+	Button,
+	Container,
+	Alert,
+	AlertIcon,
+	Heading
+} from '@chakra-ui/react';
 import HabitModal from './Modal';
 import HabitCard from './HabitCard';
 
@@ -14,21 +20,22 @@ class Dashboard extends Component {
 
 		this.state = {
 			user: undefined,
-			habits: 0,
-			showModal: false,
+			habit_quantity: 0,
+			habits: [],
+			showModal: false
 		};
 	}
-	  handleOnHide = () => {
+	handleOnHide = () => {
 		this.setState({
-		  showModal: false,
+			showModal: false
 		});
-	  };
-	
-	  handleOnShowModal = () => {
+	};
+
+	handleOnShowModal = () => {
 		this.setState({
-		  showModal: true,
+			showModal: true
 		});
-	  };
+	};
 
 	componentDidMount = () => {
 		this.getBackend();
@@ -36,36 +43,65 @@ class Dashboard extends Component {
 
 	getBackend = async () => {
 		await axios
-			.get(`${SERVER}/`)
+			.get(`${SERVER}/habits`)
 			.then((res) => {
-				console.log(res.data);
+				console.log(res.data); //* [{...}] Data is an array of objects
+				this.setState({ user: res.data[0].name }); //* Zoe
+				console.log(this.state.user);
+				this.setState({ habit_quantity: res.data[0].habits.length });
+				console.log(this.state.habit_quantity);
+				this.setState({ habits: res.data[0].habits });
+				console.log(
+					`this is the state of habits: ${JSON.stringify(this.state.habits)}`
+				);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-    };
-    
-    
+	};
+
 	render() {
-		
-		const totalHabits = this.state.habits;
+		const totalHabits = this.state.habit_quantity;
 		return (
 			<>
-				<Heading>This will be the dashboard for our habits!</Heading>
-				
-				<HabitCard  count={this.state.count} habit_name={'jellybean'}/>
-				<Button as={'button'} onClick={this.handleOnShowModal}>Modal</Button>
-                <Container>
-                    <Grid templateColumns='repeat(5, 1fr)' gap={6}>
-                        <GridItem w='100%' h='10' bg='red.400'/>
-                        <GridItem w='100%' h='10' bg='red.400'/>
-                        <GridItem w='100%' h='10' bg='red.400'/>
-                        <GridItem w='100%' h='10' bg='red.400'/>
-                        <GridItem w='100%' h='10' bg='red.400'/>
-                    </Grid>
-                </Container>
+				<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+				{this.state.habit_quantity > 0 &&
+					this.state.habits.map((habit, idx) => {
+						return (
+							<HabitCard
+								key={idx}
+								count={this.state.count}
+								habit_name={habit.habit_name}
+								habit_goal={habit.habit_goal}
+							/>
+						);
+					})}
 
-				<HabitModal showModal={this.state.showModal} onHide={this.handleOnHide} handleOnHide={this.handleOnHide} />
+				<HabitCard count={this.state.count} habit_name={'jellybean'} />
+
+				<Button
+					as={'button'}
+					onClick={this.handleOnShowModal}
+					colorScheme='purple'
+				>
+					Modal
+				</Button>
+
+				{/* <Container>
+					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
+						<GridItem w='100%' h='10' bg='red.400' />
+						<GridItem w='100%' h='10' bg='red.400' />
+						<GridItem w='100%' h='10' bg='red.400' />
+						<GridItem w='100%' h='10' bg='red.400' />
+						<GridItem w='100%' h='10' bg='red.400' />
+					</Grid>
+				</Container> */}
+
+				<HabitModal
+					showModal={this.state.showModal}
+					onHide={this.handleOnHide}
+					handleOnHide={this.handleOnHide}
+				/>
 
 				{totalHabits === 0 && (
 					<Alert status='error'>
@@ -79,5 +115,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
-
