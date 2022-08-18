@@ -4,27 +4,11 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 class HabitModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-    };
-  }
-  handleOnHide = () => {
-    this.setState({
-      showModal: true,
-    });
-  };
 
-  handleOnShowModal = () => {
-    this.setState({
-      showModal: false,
-    });
-  };
 
   render() {
     return (
-      <Modal show={this.state.showModal} onHide={this.handleOnHide}>
+      <Modal show={this.props.showModal} onHide={this.props.handleOnHide}>
         <Modal.Header closeButton>
           <Modal.Title>Add Your Habit</Modal.Title>
         </Modal.Header>
@@ -65,10 +49,10 @@ class HabitModal extends React.Component {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleOnHide}>
+          <Button variant="secondary" onClick={this.props.handleOnHide}>
             Close
           </Button>
-          <Button variant="primary" onClick={this.handleOnHide}>
+          <Button variant="primary" onClick={this.props.handleOnHide}>
             Add Your Habit
           </Button>
         </Modal.Footer>
