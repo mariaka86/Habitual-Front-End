@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container } from '@chakra-ui/react';
-import { Alert, AlertIcon, Heading } from '@chakra-ui/react';
-import { Grid, GridItem, Button } from '@chakra-ui/react';
+import {
+	Grid,
+	GridItem,
+	Button,
+	Container,
+	Alert,
+	AlertIcon,
+	Heading
+} from '@chakra-ui/react';
 import HabitModal from './Modal';
 import HabitCard from './HabitCard';
 
