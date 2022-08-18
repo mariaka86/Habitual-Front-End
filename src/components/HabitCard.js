@@ -30,7 +30,7 @@ class HabitCard extends React.Component {
         <Card.Body>
           <Card.Title>{this.props.habit_name}</Card.Title>
           <Card.Subtitle>exercise 3 times a week</Card.Subtitle>
-          <Card.Text>{this.props.count}</Card.Text>
+          <Card.Text>{this.state.count}</Card.Text>
           <Card.Text>
             <Button variant="primary"onClick={this.increaseHabit}>➕</Button>
           </Card.Text>
