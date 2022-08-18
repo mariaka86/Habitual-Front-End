@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
+import {Progress} from '@chakra-ui/progress';
 
 
 
@@ -37,7 +38,8 @@ class HabitCard extends React.Component {
           <Card.Text>
             <Button variant="primary" onClick={this.deceaseHabit}>➖</Button>
           </Card.Text>
-        </Card.Body>
+          <Progress value={this.state.count} colorScheme='pink'/>
+          </Card.Body>
       </Card>
       </>
       );
