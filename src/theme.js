@@ -1,18 +1,15 @@
 import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
-    styles: { colorScheme: 'orange',
+    styles: {
         global: {
             'body': {
-                bg: 'green.100'
+                bg: 'teal.50',
+                
+            
             }
         },
-        fonts:{
-            body: "system-ui, sans-serif",
-    heading: "Georgia, serif",
-    mono: "Menlo, monospace",
-
-        }
+    
     }
 })
 
