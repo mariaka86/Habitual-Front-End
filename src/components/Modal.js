@@ -45,6 +45,8 @@ class HabitModal extends React.Component {
               <Form.Check type="checkbox" label="Wednesday" />
               <Form.Check type="checkbox" label="Thursday" />
               <Form.Check type="checkbox" label="Friday" />
+              <Form.Check type="checkbox" label="Saturday" />
+              <Form.Check type="checkbox" label="Sunday" />
             </Form.Group>
           </Form>
         </Modal.Body>
