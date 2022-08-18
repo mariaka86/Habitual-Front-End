@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Container } from '@chakra-ui/react';
 import { Alert, AlertIcon, Heading } from '@chakra-ui/react';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, Button } from '@chakra-ui/react';
+import HabitModal from './Modal';
+import HabitCard from './HabitCard';
 
 const SERVER = process.env.REACT_APP_SERVER_URL;
 
@@ -12,9 +14,21 @@ class Dashboard extends Component {
 
 		this.state = {
 			user: undefined,
-			habits: 0
+			habits: 0,
+			showModal: false,
 		};
 	}
+	  handleOnHide = () => {
+		this.setState({
+		  showModal: false,
+		});
+	  };
+	
+	  handleOnShowModal = () => {
+		this.setState({
+		  showModal: true,
+		});
+	  };
 
 	componentDidMount = () => {
 		this.getBackend();
@@ -33,11 +47,14 @@ class Dashboard extends Component {
     
     
 	render() {
+		
 		const totalHabits = this.state.habits;
 		return (
 			<>
 				<Heading>This will be the dashboard for our habits!</Heading>
-
+				
+				<HabitCard  count={this.state.count} habit_name={'jellybean'}/>
+				<Button as={'button'} onClick={this.handleOnShowModal}>Modal</Button>
                 <Container>
                     <Grid templateColumns='repeat(5, 1fr)' gap={6}>
                         <GridItem w='100%' h='10' bg='red.400'/>
@@ -48,7 +65,7 @@ class Dashboard extends Component {
                     </Grid>
                 </Container>
 
-
+				<HabitModal showModal={this.state.showModal} onHide={this.handleOnHide} handleOnHide={this.handleOnHide} />
 
 				{totalHabits === 0 && (
 					<Alert status='error'>
@@ -62,3 +79,5 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
+
