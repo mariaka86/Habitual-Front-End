@@ -6,6 +6,7 @@ import { Grid, GridItem, Button } from '@chakra-ui/react';
 import HabitModal from './Modal';
 import HabitCard from './HabitCard';
 
+
 const SERVER = process.env.REACT_APP_SERVER_URL;
 
 class Dashboard extends Component {
@@ -52,9 +53,11 @@ class Dashboard extends Component {
 		return (
 			<>
 				<Heading>This will be the dashboard for our habits!</Heading>
+				<Button as={'button'} onClick={this.handleOnShowModal} colorScheme='purple'>Modal</Button>
+
 				
 				<HabitCard  count={this.state.count} habit_name={'jellybean'}/>
-				<Button as={'button'} onClick={this.handleOnShowModal}>Modal</Button>
+
                 <Container>
                     <Grid templateColumns='repeat(5, 1fr)' gap={6}>
                         <GridItem w='100%' h='10' bg='red.400'/>
