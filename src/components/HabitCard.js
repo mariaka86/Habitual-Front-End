@@ -19,7 +19,7 @@ class HabitCard extends React.Component {
   
   };
 
-  deceaseHabit = () => {
+  decreaseHabit = () => {
     this.setState({count: this.state.count -1 })
     console.log(`decreasing count: ${this.state.count}`);
   }
@@ -36,7 +36,7 @@ class HabitCard extends React.Component {
             <Button variant="primary"onClick={this.increaseHabit}>➕</Button>
           </Card.Text>
           <Card.Text>
-            <Button variant="primary" onClick={this.deceaseHabit}>➖</Button>
+            <Button variant="primary" onClick={this.decreaseHabit}>➖</Button>
           </Card.Text>
           <Progress value={this.state.count} colorScheme='pink'/>
           </Card.Body>
