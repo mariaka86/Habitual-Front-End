@@ -64,7 +64,7 @@ class Dashboard extends Component {
 		const totalHabits = this.state.habit_quantity;
 		return (
 			<>
-				<Heading>Welcome to your habit dashboard {this.state.user } !</Heading>
+				<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
 				{this.state.habit_quantity > 0 &&
 					this.state.habits.map((habit, idx) => {
 						return (
@@ -79,7 +79,11 @@ class Dashboard extends Component {
 
 				<HabitCard count={this.state.count} habit_name={'jellybean'} />
 
-				<Button as={'button'} onClick={this.handleOnShowModal}>
+				<Button
+					as={'button'}
+					onClick={this.handleOnShowModal}
+					colorScheme='purple'
+				>
 					Modal
 				</Button>
 
