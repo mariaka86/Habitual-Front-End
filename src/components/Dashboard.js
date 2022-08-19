@@ -19,6 +19,7 @@ class Dashboard extends Component {
 		super(props);
 
 		this.state = {
+			_id: '',
 			user: undefined,
 			habit_quantity: 0,
 			habits: [],
@@ -54,6 +55,24 @@ class Dashboard extends Component {
 				console.log(
 					`this is the state of habits: ${JSON.stringify(this.state.habits)}`
 				);
+				this.setState({ _id: res.data[0]._id });
+				console.log(this.state._id);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
+
+	addHabit = async (newHabit) => {
+		console.log(`adding habit ${JSON.stringify(newHabit)}`);
+		newHabit._id = this.state._id;
+		console.log(JSON.stringify(newHabit));
+
+		await axios
+			.post(`${SERVER}/habits/add`, newHabit)
+			.then((res) => {
+				console.log(res);
+				this.getBackend();
 			})
 			.catch((err) => {
 				console.error(err);
@@ -87,20 +106,11 @@ class Dashboard extends Component {
 					Modal
 				</Button>
 
-				{/* <Container>
-					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-					</Grid>
-				</Container> */}
-
 				<HabitModal
 					showModal={this.state.showModal}
 					onHide={this.handleOnHide}
 					handleOnHide={this.handleOnHide}
+					addHabit={this.addHabit}
 				/>
 
 				{totalHabits === 0 && (
