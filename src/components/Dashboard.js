@@ -79,20 +79,21 @@ class Dashboard extends Component {
 			});
 	};
 
-	deleteHabit = async(deletedHabit) => {
+	deleteHabit = async (deletedHabit) => {
 		console.log(`deleteHabit() in Dashboard.js`);
-		
-		
-		
-		console.log(`Dashboard.js, habit being deleted: ${JSON.stringify(deletedHabit)}`);
-		await axios.delete(`${SERVER}/habits/delete`, { data: deletedHabit } )
-		.then((res) => {
-			console.log(res.data)
-		}).catch((err) => {
-			console.error(err);
-		});
 
-	}
+		console.log(
+			`Dashboard.js, habit being deleted: ${JSON.stringify(deletedHabit)}`
+		);
+		await axios
+			.delete(`${SERVER}/habits/delete`, { data: deletedHabit })
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
 
 	render() {
 		const totalHabits = this.state.habit_quantity;
@@ -100,7 +101,13 @@ class Dashboard extends Component {
 			<>
 				<Container maxWidth='90%' rowGap={'100px'}>
 					<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
-					<Button as={'button'} onClick={this.handleOnShowModal} colorScheme='purple'>Add a habit</Button>	
+					<Button
+						as={'button'}
+						onClick={this.handleOnShowModal}
+						colorScheme='purple'
+					>
+						Add a habit
+					</Button>
 
 					<SimpleGrid columns={3} spacing={5}>
 						{this.state.habit_quantity > 0 &&
@@ -116,7 +123,8 @@ class Dashboard extends Component {
 										/>
 									</Box>
 								);
-							})};
+							})}
+						;
 					</SimpleGrid>
 
 					<Box>
@@ -124,6 +132,7 @@ class Dashboard extends Component {
 							showModal={this.state.showModal}
 							onHide={this.handleOnHide}
 							handleOnHide={this.handleOnHide}
+							addHabit={this.addHabit}
 						/>
 					</Box>
 
@@ -135,7 +144,7 @@ class Dashboard extends Component {
 							</Box>
 						</Alert>
 					)}
-					</Container>
+				</Container>
 			</>
 		);
 	}
