@@ -56,7 +56,7 @@ class Dashboard extends Component {
 					`this is the state of habits: ${JSON.stringify(this.state.habits)}`
 				);
 				this.setState({ _id: res.data[0]._id });
-				console.log(this.state._id)
+				console.log(this.state._id);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -72,6 +72,7 @@ class Dashboard extends Component {
 			.post(`${SERVER}/habits/add`, newHabit)
 			.then((res) => {
 				console.log(res);
+				this.getBackend();
 			})
 			.catch((err) => {
 				console.error(err);
@@ -104,16 +105,6 @@ class Dashboard extends Component {
 				>
 					Modal
 				</Button>
-
-				{/* <Container>
-					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-					</Grid>
-				</Container> */}
 
 				<HabitModal
 					showModal={this.state.showModal}
