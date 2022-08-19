@@ -19,6 +19,11 @@ class HabitCard extends React.Component {
     console.log(`decreasing count: ${this.state.count}`);
   };
 
+  deleteHabit = async () => {
+    console.log(`deleteHabit() in HabitCard.js`);
+    this.props.deleteHabit(this.props.habit);
+  }
+
   render() {
     return (
       <>
