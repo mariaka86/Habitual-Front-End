@@ -101,16 +101,6 @@ class Dashboard extends Component {
 							);
 						})}
 				</SimpleGrid>
-				<HabitCard count={this.state.count} habit_name={'jellybean'} />
-				<Box>
-					<Button
-						as={'button'}
-						onClick={this.handleOnShowModal}
-						colorScheme='purple'
-					>
-						Modal
-					</Button>
-				</Box>
 
 				<Box>
 					<HabitModal
