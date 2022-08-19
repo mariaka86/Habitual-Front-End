@@ -21,6 +21,7 @@ class Dashboard extends Component {
 		super(props);
 
 		this.state = {
+			_id: '',
 			user: undefined,
 			habit_quantity: 0,
 			habits: [],
@@ -56,6 +57,24 @@ class Dashboard extends Component {
 				console.log(
 					`this is the state of habits: ${JSON.stringify(this.state.habits)}`
 				);
+				this.setState({ _id: res.data[0]._id });
+				console.log(this.state._id);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
+
+	addHabit = async (newHabit) => {
+		console.log(`adding habit ${JSON.stringify(newHabit)}`);
+		newHabit._id = this.state._id;
+		console.log(JSON.stringify(newHabit));
+
+		await axios
+			.post(`${SERVER}/habits/add`, newHabit)
+			.then((res) => {
+				console.log(res);
+				this.getBackend();
 			})
 			.catch((err) => {
 				console.error(err);
@@ -66,7 +85,7 @@ class Dashboard extends Component {
 		const totalHabits = this.state.habit_quantity;
 		return (
 			<>
-				<SimpleGrid spacing={1} columns={1}>
+				<SimpleGrid spacing={5} columns={1}>
 					<Box>
 						<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
 						{this.state.habit_quantity > 0 &&
@@ -108,6 +127,7 @@ class Dashboard extends Component {
 						handleOnHide={this.handleOnHide}
 					/>
 				</Box>
+				
 
 				{totalHabits === 0 && (
 
