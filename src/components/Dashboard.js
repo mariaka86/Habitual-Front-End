@@ -81,7 +81,7 @@ class Dashboard extends Component {
 
 	deleteHabit = async (deletedHabit) => {
 		console.log(`deleteHabit() in Dashboard.js`);
-
+		
 		console.log(
 			`Dashboard.js, habit being deleted: ${JSON.stringify(deletedHabit)}`
 		);
