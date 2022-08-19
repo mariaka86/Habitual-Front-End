@@ -5,9 +5,11 @@ import {
 	GridItem,
 	Button,
 	Container,
+	SimpleGrid,
 	Alert,
 	AlertIcon,
-	Heading
+	Heading,
+	Box
 } from '@chakra-ui/react';
 import HabitModal from './Modal';
 import HabitCard from './HabitCard';
@@ -64,29 +66,32 @@ class Dashboard extends Component {
 		const totalHabits = this.state.habit_quantity;
 		return (
 			<>
-				<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
-				{this.state.habit_quantity > 0 &&
-					this.state.habits.map((habit, idx) => {
-						return (
-							<HabitCard
-								key={idx}
-								count={this.state.count}
-								habit_name={habit.habit_name}
-								habit_goal={habit.habit_goal}
-							/>
-						);
-					})}
-
-				<HabitCard count={this.state.count} habit_name={'jellybean'} />
-
-				<Button
-					as={'button'}
-					onClick={this.handleOnShowModal}
-					colorScheme='purple'
-				>
-					Modal
-				</Button>
-
+				<SimpleGrid spacing={1} columns={1}>
+					<Box>
+						<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+						{this.state.habit_quantity > 0 &&
+							this.state.habits.map((habit, idx) => {
+								return (
+									<HabitCard
+										key={idx}
+										count={this.state.count}
+										habit_name={habit.habit_name}
+										habit_goal={habit.habit_goal}
+									/>
+								);
+							})}
+					</Box>
+					<HabitCard count={this.state.count} habit_name={'jellybean'} />
+					<Box>
+						<Button
+							as={'button'}
+							onClick={this.handleOnShowModal}
+							colorScheme='purple'
+						>
+							Modal
+						</Button>
+					</Box>
+				
 				{/* <Container>
 					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
 						<GridItem w='100%' h='10' bg='red.400' />
@@ -96,19 +101,25 @@ class Dashboard extends Component {
 						<GridItem w='100%' h='10' bg='red.400' />
 					</Grid>
 				</Container> */}
-
-				<HabitModal
-					showModal={this.state.showModal}
-					onHide={this.handleOnHide}
-					handleOnHide={this.handleOnHide}
-				/>
+				<Box>
+					<HabitModal
+						showModal={this.state.showModal}
+						onHide={this.handleOnHide}
+						handleOnHide={this.handleOnHide}
+					/>
+				</Box>
 
 				{totalHabits === 0 && (
+
 					<Alert status='error'>
-						<AlertIcon />
-						Looks like you don't have any habits!
+						<Box>
+							<AlertIcon />
+							Looks like you don't have any habits!
+						</Box>
 					</Alert>
+
 				)}
+				</SimpleGrid>
 			</>
 		);
 	}
