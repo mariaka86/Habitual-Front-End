@@ -84,7 +84,7 @@ class Dashboard extends Component {
 	render() {
 		const totalHabits = this.state.habit_quantity;
 		return (
-
+				<>
 				<SimpleGrid spacing={5} columns={1}>
 					<Box>
 						<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
