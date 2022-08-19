@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {
-	Grid,
-	GridItem,
-	Button,
 	Container,
 	SimpleGrid,
 	Alert,
 	AlertIcon,
 	Heading,
-	Box
+	Box,
+	Button
 } from '@chakra-ui/react';
 import HabitModal from './Modal';
 import HabitCard from './HabitCard';
@@ -81,65 +79,72 @@ class Dashboard extends Component {
 			});
 	};
 
+	deleteHabit = async (deletedHabit) => {
+		console.log(`deleteHabit() in Dashboard.js`);
+		
+		console.log(
+			`Dashboard.js, habit being deleted: ${JSON.stringify(deletedHabit)}`
+		);
+		await axios
+			.delete(`${SERVER}/habits/delete`, { data: deletedHabit })
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
+
 	render() {
 		const totalHabits = this.state.habit_quantity;
 		return (
-				<>
-				<SimpleGrid spacing={5} columns={1}>
-					<Box>
-						<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+			<>
+				<Container maxWidth='90%' rowGap={'100px'}>
+					<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+					<Button
+						as={'button'}
+						onClick={this.handleOnShowModal}
+						colorScheme='purple'
+					>
+						Add a habit
+					</Button>
+
+					<SimpleGrid columns={3} spacing={5}>
 						{this.state.habit_quantity > 0 &&
 							this.state.habits.map((habit, idx) => {
 								return (
-									<HabitCard
-										key={idx}
-										count={this.state.count}
-										habit_name={habit.habit_name}
-										habit_goal={habit.habit_goal}
-									/>
+									<Box key={idx}>
+										<HabitCard
+											count={this.state.count}
+											habit_name={habit.habit_name}
+											habit_goal={habit.habit_goal}
+											deleteHabit={this.deleteHabit}
+											habit={habit}
+										/>
+									</Box>
 								);
 							})}
-					</Box>
-					<HabitCard count={this.state.count} habit_name={'jellybean'} />
+						;
+					</SimpleGrid>
+
 					<Box>
-						<Button
-							as={'button'}
-							onClick={this.handleOnShowModal}
-							colorScheme='purple'
-						>
-							Modal
-						</Button>
+						<HabitModal
+							showModal={this.state.showModal}
+							onHide={this.handleOnHide}
+							handleOnHide={this.handleOnHide}
+							addHabit={this.addHabit}
+						/>
 					</Box>
-				
-				{/* <Container>
-					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-					</Grid>
-				</Container> */}
-				<Box>
-					<HabitModal
-						showModal={this.state.showModal}
-						onHide={this.handleOnHide}
-						handleOnHide={this.handleOnHide}
-					/>
-				</Box>
-				
 
-				{totalHabits === 0 && (
-
-					<Alert status='error'>
-						<Box>
-							<AlertIcon />
-							Looks like you don't have any habits!
-						</Box>
-					</Alert>
-
-				)}
-				</SimpleGrid>
+					{totalHabits === 0 && (
+						<Alert status='error'>
+							<Box>
+								<AlertIcon />
+								Looks like you don't have any habits!
+							</Box>
+						</Alert>
+					)}
+				</Container>
 			</>
 		);
 	}

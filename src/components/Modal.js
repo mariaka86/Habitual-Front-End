@@ -2,9 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios';
 
-let SERVER = process.env.REACT_APP_SERVER_URL;
 
 class HabitModal extends React.Component {
 	handleSubmit = async (evt) => {
