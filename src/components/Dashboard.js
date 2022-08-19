@@ -85,39 +85,40 @@ class Dashboard extends Component {
 		const totalHabits = this.state.habit_quantity;
 		return (
 			<>
-				<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
-				<SimpleGrid minChildWidth='120px' spacing='40px'>
-					{this.state.habit_quantity > 0 &&
-						this.state.habits.map((habit, idx) => {
-							return (
-								<Box>
-									<HabitCard
-										key={idx}
-										count={this.state.count}
-										habit_name={habit.habit_name}
-										habit_goal={habit.habit_goal}
-									/>
-								</Box>
-							);
-						})}
-				</SimpleGrid>
+				<Container maxWidth='90%' rowGap={'100px'}>
+					<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+					<SimpleGrid columns={3} spacing={5}>
+						{this.state.habit_quantity > 0 &&
+							this.state.habits.map((habit, idx) => {
+								return (
+									<Box key={idx}>
+										<HabitCard
+											count={this.state.count}
+											habit_name={habit.habit_name}
+											habit_goal={habit.habit_goal}
+										/>
+									</Box>
+								);
+							})};
+					</SimpleGrid>
 
-				<Box>
-					<HabitModal
-						showModal={this.state.showModal}
-						onHide={this.handleOnHide}
-						handleOnHide={this.handleOnHide}
-					/>
-				</Box>
+					<Box>
+						<HabitModal
+							showModal={this.state.showModal}
+							onHide={this.handleOnHide}
+							handleOnHide={this.handleOnHide}
+						/>
+					</Box>
 
-				{totalHabits === 0 && (
-					<Alert status='error'>
-						<Box>
-							<AlertIcon />
-							Looks like you don't have any habits!
-						</Box>
-					</Alert>
-				)}
+					{totalHabits === 0 && (
+						<Alert status='error'>
+							<Box>
+								<AlertIcon />
+								Looks like you don't have any habits!
+							</Box>
+						</Alert>
+					)}
+					</Container>
 			</>
 		);
 	}
