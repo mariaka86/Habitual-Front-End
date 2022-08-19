@@ -84,42 +84,34 @@ class Dashboard extends Component {
 	render() {
 		const totalHabits = this.state.habit_quantity;
 		return (
-
-				<SimpleGrid spacing={5} columns={1}>
-					<Box>
-						<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
-						{this.state.habit_quantity > 0 &&
-							this.state.habits.map((habit, idx) => {
-								return (
+			<>
+				<Heading>Welcome to your habit dashboard {this.state.user}!</Heading>
+				<SimpleGrid minChildWidth='120px' spacing='40px'>
+					{this.state.habit_quantity > 0 &&
+						this.state.habits.map((habit, idx) => {
+							return (
+								<Box>
 									<HabitCard
 										key={idx}
 										count={this.state.count}
 										habit_name={habit.habit_name}
 										habit_goal={habit.habit_goal}
 									/>
-								);
-							})}
-					</Box>
-					<HabitCard count={this.state.count} habit_name={'jellybean'} />
-					<Box>
-						<Button
-							as={'button'}
-							onClick={this.handleOnShowModal}
-							colorScheme='purple'
-						>
-							Modal
-						</Button>
-					</Box>
-				
-				{/* <Container>
-					<Grid templateColumns='repeat(5, 1fr)' gap={6}>
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-						<GridItem w='100%' h='10' bg='red.400' />
-					</Grid>
-				</Container> */}
+								</Box>
+							);
+						})}
+				</SimpleGrid>
+				<HabitCard count={this.state.count} habit_name={'jellybean'} />
+				<Box>
+					<Button
+						as={'button'}
+						onClick={this.handleOnShowModal}
+						colorScheme='purple'
+					>
+						Modal
+					</Button>
+				</Box>
+
 				<Box>
 					<HabitModal
 						showModal={this.state.showModal}
@@ -127,19 +119,15 @@ class Dashboard extends Component {
 						handleOnHide={this.handleOnHide}
 					/>
 				</Box>
-				
 
 				{totalHabits === 0 && (
-
 					<Alert status='error'>
 						<Box>
 							<AlertIcon />
 							Looks like you don't have any habits!
 						</Box>
 					</Alert>
-
 				)}
-				</SimpleGrid>
 			</>
 		);
 	}
